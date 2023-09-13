@@ -11,9 +11,10 @@ public class Utils {
         return Path.of(path).toFile().isFile();
     }
 
-    public static byte[] getPadding2(byte[] data, int readLen) throws IOException {
+    public static byte[] getPadding(byte[] data) throws IOException {
+        int lastBlockLen = data.length % 64;
         long dataLenBytes = data.length;
-        int zerosLength = (int) (56 - ((readLen + 1) % 56));
+        int zerosLength = (int) (64 - lastBlockLen - 9) % 64;
         byte[] result = new byte[data.length + 9 + zerosLength];
         System.arraycopy(data, 0, result, 0, data.length);
         int idx = (int) dataLenBytes;

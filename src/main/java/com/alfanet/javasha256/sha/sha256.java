@@ -1,7 +1,5 @@
 package com.alfanet.javasha256.sha;
 
-import com.alfanet.javasha256.utils.Utils;
-
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
@@ -45,7 +43,7 @@ public class sha256 {
         // initialize all words
         int[] words = pad(message);
 
-        System.out.println("Mamy " + words.length / 16 + " = " + words.length * 4);
+        //  System.out.println("Mamy " + words.length / 16 + " = " + words.length * 4);
 
         // enumerate all blocks (each containing 16 words)
         for (int i = 0, n = words.length / 16; i < n; ++i) {
@@ -53,11 +51,11 @@ public class sha256 {
 
             // initialize W from the block's words
             System.arraycopy(words, i * 16, W, 0, 16);
-            if (i == n - 1) {
-                ByteBuffer b = ByteBuffer.allocate(64);
-                for (int ix = 0; ix < 16; ix++) b.putInt(W[ix]);
-                Utils.printHex(b.array());
-            }
+//            if (i == n - 1) {
+//                ByteBuffer b = ByteBuffer.allocate(64);
+//                for (int ix = 0; ix < 16; ix++) b.putInt(W[ix]);
+//                Utils.printHex(b.array());
+//            }
 //            System.out.println("i=" + i);
 //            for (int x = 0; x < 16; x++) {
 //                System.out.println("W[" + x + "] = " + Integer.toHexString(W[x]));

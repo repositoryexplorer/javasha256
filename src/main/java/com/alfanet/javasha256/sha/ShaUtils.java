@@ -41,14 +41,8 @@ public class ShaUtils {
     private int[] W = new int[64];
 
     public void calculateSha256(int[] blockWords) {
-        //public void calculateSha256(byte[] data) {
         //1) Schedule message
         System.arraycopy(blockWords, 0, W, 0, 16);
-//        for (byte t = 0; t < 16; t++) {
-//            int r = Utils.intFromArray(data, t);
-//            W[t] = r;
-//
-//        }
         for (byte t = 16; t < 64; t++) {
             W[t] = SSIG1(W[t - 2]) + W[t - 7] + SSIG0(W[t - 15]) + W[t - 16];
         }

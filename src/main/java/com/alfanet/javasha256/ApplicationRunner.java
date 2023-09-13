@@ -35,9 +35,9 @@ public class ApplicationRunner implements CommandLineRunner {
         ShaUtils sha = new ShaUtils();
         FileInputStream inStream = new FileInputStream(path);
 
-        byte[] allBytes = inStream.readAllBytes();
-        int rest = allBytes.length % 64;
-        allBytes = Utils.getPadding2(allBytes, rest);
+//        int zerosLength = (int) (64 - (Math.abs((64 - 63 - 9) % 64)));
+//        System.out.println("ZEROS: " + zerosLength);
+        byte[] allBytes = Utils.getPadding(inStream.readAllBytes());
         byte[] blockBytes = new byte[64];
         int blockCount = allBytes.length / 64;
         for (int i = 0; i < blockCount; i++) {
