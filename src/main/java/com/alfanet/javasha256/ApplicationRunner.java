@@ -34,23 +34,6 @@ public class ApplicationRunner implements CommandLineRunner {
         LocalTime start = LocalTime.now();
         ShaUtils sha = new ShaUtils();
         FileInputStream inStream = new FileInputStream(path);
-//        int streamLen = inStream.available();
-//        boolean lastRun = false;
-//        byte[] bytesRead = inStream.readNBytes(64);
-//        ByteBuffer bytesBuffer = ByteBuffer.allocate(64);
-//        while (!lastRun) {
-//            bytesRead = inStream.readNBytes(64);
-//            bytesBuffer.clear();
-//            bytesBuffer.put(bytesRead);
-//            if (bytesRead.length < 64) {
-//                lastRun = true;
-//                byte[] padding = Utils.getPadding(bytesRead, streamLen);
-//                bytesBuffer.put(padding);
-//                System.out.println("Przeczytalem " + bytesRead.length + " bajtow padding: " + padding.length + " suma: " + (bytesRead.length + padding.length));
-//            }
-//            sha.calculateSha256(bytesBuffer.array());
-//        }
-
 
         byte[] allBytes = inStream.readAllBytes();
         int rest = allBytes.length % 64;
@@ -74,10 +57,10 @@ public class ApplicationRunner implements CommandLineRunner {
         Duration d = Duration.between(start, end);
         System.out.println("Czas : " + d.getSeconds() + "sec");
         System.out.println("Hash: " + sha.getHashString());
-        System.out.println("HASH: 24f34b8ae756770396538b0ed3c4a6d59ee6a5411adda33d13678d3a375c531f");
         inStream.close();
-        FileInputStream inStream2 = new FileInputStream(path);
 
+
+        FileInputStream inStream2 = new FileInputStream(path);
         LocalTime start2 = LocalTime.now();
         byte[] all = inStream2.readAllBytes();
         inStream2.close();
