@@ -18,7 +18,6 @@ public class ShaUtils {
             0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
             0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
             0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2};
-    private static int wordSize = 32;
 
     private int H0 = 0x6a09e667;
     private int H1 = 0xbb67ae85;
@@ -107,22 +106,11 @@ public class ShaUtils {
     }
 
     private int ROTR(int x, int n) {
-        // return (x >>> n) | (x << (wordSize - n));
         return Integer.rotateRight(x, n);
     }
 
-//    private int ROTL(int x, int n) {
-//        return (x << n) | (x >> (wordSize - n));
-//    }
-
-    public String getHashString() {
-        return Integer.toHexString(H0) +
-                Integer.toHexString(H1) +
-                Integer.toHexString(H2) +
-                Integer.toHexString(H3) +
-                Integer.toHexString(H4) +
-                Integer.toHexString(H5) +
-                Integer.toHexString(H6) +
-                Integer.toHexString(H7);
+    public int[] getHasValues() {
+        int[] result = {H0, H1, H2, H3, H4, H5, H6, H7};
+        return result;
     }
 }
