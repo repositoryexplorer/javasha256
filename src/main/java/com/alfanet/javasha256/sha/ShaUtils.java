@@ -39,7 +39,7 @@ public class ShaUtils {
 
     private int[] W = new int[64];
 
-    public void calculateSha256(int[] blockWords) {
+    public void calculateSha256(int[] blockWords) { // for sha256 input is 16 4-bytes integers
         //1) Schedule message
         System.arraycopy(blockWords, 0, W, 0, 16);
         for (byte t = 16; t < 64; t++) {

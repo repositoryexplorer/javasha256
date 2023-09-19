@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: "off"
+  batch:
+    job:
+      enabled: false
+
+logging:
+  level:
+    root: "off"

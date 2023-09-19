@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Bean;
 public class JavaSha256Application {
 
     @Bean
-    public ApplicationRunner applicationRunner() {
-        return new ApplicationRunner();
+    public MainRunner applicationRunner() {
+        return new MainRunner();
     }
-    
+
     public static void main(String[] args) {
         SpringApplication.run(JavaSha256Application.class, args);
     }
