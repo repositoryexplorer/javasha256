@@ -12,7 +12,7 @@ public class MainRunner implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
         ParametersParser params = new ParametersParser();
         if (!params.parseArguments(args)) {
-            System.exit(1);
+            System.exit(0);
         } else {
             if (params.isHKDF()) {
                 HkdfWrapper.calculateKey(params.getKeyFilePath(), params.getOutputFilePath());
